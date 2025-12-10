@@ -13,7 +13,7 @@ Este proyecto es un pequeño juego interactivo donde los usuarios pueden explora
 ## Tecnologías Usadas
 - **Frontend:** Angular (v20.3.0)
 - **Backend:** Node.js con Express (archivo `server.js` en la carpeta `server/`)
-- **Base de Datos:** Archivo SQL (`bbdd.sql`) para la gestión de datos (concretamente Postgresql).
+- **Base de Datos:** Archivo SQL (`bbdd.sql`) para la gestión de datos en Postgresql.
 - **Estilos:** CSS para el diseño y la presentación visual.
 - **Herramientas de Desarrollo:**
   - TypeScript para un desarrollo tipado y robusto.
@@ -29,5 +29,5 @@ El proyecto está organizado de la siguiente manera:
 1. Clona este repositorio.
 2. Instala las dependencias con `npm install`.
 3. Ejecuta el servidor de desarrollo (server.js) con `npm start`.
-4. Lanza la página con 'ng serve'
+4. Lanza la página con 'ng serve'.
 4. Accede a la aplicación en tu navegador en `http://localhost:4200`.

@@ -1,8 +1,8 @@
 // Componente para mostrar información de un plato de comida
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderDBService } from '../../order-db.service';
-import { DataTransferService, Comida } from '../../data-transfer.service';
+import { OrderDBService } from '../../services/order-db.service';
+import { DataTransferService, Comida } from '../../services/data-transfer.service';
 import { Subscription } from 'rxjs';
 
 @Component({

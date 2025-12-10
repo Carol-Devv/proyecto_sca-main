@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Menu } from '../../components/menu/menu';
-import { OrderDBService } from '../../order-db.service';
+import { OrderDBService } from '../../services/order-db.service';
 
 @Component({
   selector: 'app-fallida',

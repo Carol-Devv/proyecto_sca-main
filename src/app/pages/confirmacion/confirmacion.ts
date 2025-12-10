@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Menu } from '../../components/menu/menu';
-import { OrderDBService } from '../../order-db.service';
-import { DataTransferService, Comida } from '../../data-transfer.service';
+import { OrderDBService } from '../../services/order-db.service';
+import { DataTransferService, Comida } from '../../services/data-transfer.service';
 
 @Component({
   selector: 'app-confirmacion',
