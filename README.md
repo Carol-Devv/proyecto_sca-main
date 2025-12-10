@@ -6,9 +6,7 @@ Este proyecto es un pequeño juego interactivo donde los usuarios pueden explora
 ## Funcionalidades
 - **Explorar Menús:** Navega por diferentes categorías de comida como china, italiana, mexicana, japonesa, entre otras.
 - **Realizar Pedidos:** Selecciona tus platos favoritos y realiza pedidos.
-<!-- - **Historial de Pedidos:** Consulta los pedidos realizados anteriormente. -->
 - **Perfil de Usuario:** Personaliza tu perfil y gestiona tus preferencias.
-<!-- - **Resurrección de Pedidos:** Recupera pedidos anteriores con la funcionalidad de "resurrección". -->
 
 ## Tecnologías Usadas
 - **Frontend:** Angular (v20.3.0)
