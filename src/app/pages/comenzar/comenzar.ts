@@ -94,7 +94,34 @@ export class Comenzar {
   // 📝 REGISTRO
   // ---------------------
   register() {
-    if (this.registerForm.invalid) return;
+    if (this.registerForm.invalid) {
+      const missing: string[] = [];
+      const values = this.registerForm.value || {};
+      const mapping: { [key: string]: string } = {
+        userName: 'Usuario',
+        password: 'Contraseña',
+        name: 'Nombre',
+        age: 'Edad',
+        blodGroup: 'Grupo sanguíneo',
+        kidneys: 'Riñones',
+        religion: 'Religión',
+        healthStatus: 'Estado de salud'
+      };
+
+      for (const key in mapping) {
+        const val = values[key];
+        if (val === undefined || val === null || (typeof val === 'string' && val.trim() === '')) {
+          missing.push(mapping[key]);
+        }
+      }
+
+      if (missing.length) {
+        alert('No se pueden dejar campos vacíos. Rellena: ' + missing.join(', '));
+      } else {
+        alert('Formulario inválido. Revisa los campos.');
+      }
+      return;
+    }
 
     const data = this.registerForm.value;
 
