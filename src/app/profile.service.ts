@@ -1,3 +1,4 @@
+// Servicio para gestionar el perfil del usuario
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -5,9 +6,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ProfileService {
-  private userSubject = new BehaviorSubject<any>(this.readUserFromSession());
-  user$ = this.userSubject.asObservable();
+  private userSubject = new BehaviorSubject<any>(this.readUserFromSession()); // Sujeto para el estado del usuario
+  user$ = this.userSubject.asObservable(); // Observable para suscribirse a los cambios del usuario
 
+  // Lee el usuario almacenado en sessionStorage
   private readUserFromSession(): any {
     try {
       const s = sessionStorage.getItem('user');
@@ -18,10 +20,12 @@ export class ProfileService {
     }
   }
 
+  // Refresca el estado del usuario desde sessionStorage
   refreshFromSession(): void {
     this.userSubject.next(this.readUserFromSession());
   }
 
+  // Actualiza los contadores de pedidos y fallidos en sessionStorage
   updateCounters(updates: { n_pedidos?: number; n_fallidos?: number }): void {
     try {
       const user = this.readUserFromSession() || {};

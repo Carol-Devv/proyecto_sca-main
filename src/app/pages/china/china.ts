@@ -1,3 +1,4 @@
+// Componente para mostrar la página de comida china
 import { Component } from '@angular/core';
 import { Comidas } from "../../components/comidas/comidas";
 import { Menu } from "../../components/menu/menu";

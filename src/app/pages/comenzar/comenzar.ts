@@ -1,3 +1,4 @@
+// Componente para gestionar el inicio de sesión y registro de usuarios
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
@@ -13,86 +14,84 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 })
 export class Comenzar {
 
+  // Formulario para el inicio de sesión
   loginForm: FormGroup;
+  // Formulario para el registro de usuarios
   registerForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router
+    private fb: FormBuilder, // Constructor de formularios reactivos
+    private http: HttpClient, // Cliente HTTP para realizar solicitudes al backend
+    private router: Router // Enrutador para la navegación entre páginas
   ) {
 
     // FORMULARIO LOGIN
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+      userName: ['', Validators.required], // Campo obligatorio para el nombre de usuario
+      password: ['', Validators.required]  // Campo obligatorio para la contraseña
     });
 
     // FORMULARIO REGISTRO
     this.registerForm = this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      blodGroup: ['', Validators.required],
-      kidneys: ['', Validators.required],
-      religion: ['', Validators.required],
-      healthStatus: ['', Validators.required]
+      userName: ['', Validators.required], // Campo obligatorio para el nombre de usuario
+      password: ['', Validators.required], // Campo obligatorio para la contraseña
+      name: ['', Validators.required],     // Campo obligatorio para el nombre
+      age: ['', Validators.required],      // Campo obligatorio para la edad
+      blodGroup: ['', Validators.required], // Campo obligatorio para el grupo sanguíneo
+      kidneys: ['', Validators.required],   // Campo obligatorio para los riñones
+      religion: ['', Validators.required],  // Campo obligatorio para la religión
+      healthStatus: ['', Validators.required] // Campo obligatorio para el estado de salud
     });
   }
 
   // ---------------------
   // 🚪 LOGIN
   // ---------------------
+  // Método para manejar el inicio de sesión
   login() {
-    if (this.loginForm.invalid) return;
+    if (this.loginForm.invalid) return; // Verifica si el formulario es válido
 
-    const { userName, password } = this.loginForm.value;
+    const { userName, password } = this.loginForm.value; // Obtiene los valores del formulario
 
     if (this.loginForm.valid) {
-    this.http.post(
-      'http://127.0.0.1:3000/api/user/login',
-      { userName, password }
-    ).subscribe({
-      next: (res: any) => {
-        // El backend puede devolver distintos formatos. Detectar éxito y actuar en consecuencia.
-        // Posibles respuestas:
-        // 1) { success: true, message: 'OK', user: { ... } }
-        // 2) { message: 'Credenciales incorrectas' } (sin error HTTP)
-        // 3) directamente el objeto user
-        const successFlag = typeof res?.success === 'boolean' ? res.success : undefined;
-        const returnedUser = res?.user ?? res;
+      this.http.post(
+        'http://127.0.0.1:3000/api/user/login',
+        { userName, password }
+      ).subscribe({
+        next: (res: any) => {
+          // Manejo de la respuesta del backend
+          const successFlag = typeof res?.success === 'boolean' ? res.success : undefined;
+          const returnedUser = res?.user ?? res;
 
-        const isSuccessful = successFlag !== undefined
-          ? successFlag
-          : (returnedUser && (returnedUser.username || returnedUser.userName || returnedUser.name));
+          const isSuccessful = successFlag !== undefined
+            ? successFlag
+            : (returnedUser && (returnedUser.username || returnedUser.userName || returnedUser.name));
 
-        if (isSuccessful) {
-          try {
-            // Si la respuesta tiene `user`, guardar esa propiedad; si no, guardar `res` completo
-            const toStore = res?.user ?? res;
-            sessionStorage.setItem('user', JSON.stringify(toStore));
-          } catch (e) {
-            console.warn('No se pudo guardar en sessionStorage', e);
+          if (isSuccessful) {
+            try {
+              const toStore = res?.user ?? res;
+              sessionStorage.setItem('user', JSON.stringify(toStore)); // Guarda el usuario en sessionStorage
+            } catch (e) {
+              console.warn('No se pudo guardar en sessionStorage', e);
+            }
+            alert(res.message ?? 'Login correcto.');
+            this.router.navigate(['/perfil']); // Navega al perfil del usuario
+          } else {
+            alert(res.message ?? 'Login fallido. Credenciales incorrectas.');
           }
-          alert(res.message ?? 'Login correcto.');
-          this.router.navigate(['/perfil']);
-        } else {
-          // No navegar si el backend indica fallo (aunque sea 200 OK)
-          alert(res.message ?? 'Login fallido. Credenciales incorrectas.');
+        },
+        error: (err: any) => {
+          console.error(err);
+          alert('Login fallido. Credenciales incorrectas.');
         }
-      },
-      error: (err: any) => {
-        console.error(err);
-        alert('Login fallido. Credenciales incorrectas.');
-      }
-    });
+      });
+    }
   }
-}
 
   // ---------------------
   // 📝 REGISTRO
   // ---------------------
+  // Método para manejar el registro de usuarios
   register() {
     if (this.registerForm.invalid) {
       const missing: string[] = [];
@@ -130,9 +129,6 @@ export class Comenzar {
       data
     ).subscribe({
       next: (res: any) => {
-        // Guardar en sessionStorage un objeto con las claves que `perfil.ts` espera.
-        // Preferir la respuesta del backend (res.user o res) si incluye datos de usuario,
-        // si no, usar los valores del formulario `data`.
         const backendUser = res?.user ?? res;
         let userToStore: any;
 
@@ -147,7 +143,6 @@ export class Comenzar {
             healthstatus: backendUser.healthstatus ?? backendUser.healthStatus ?? ''
           };
         } else {
-          // La API no devolvió el user; usar los datos del formulario y normalizar los nombres
           userToStore = {
             username: data.userName ?? '',
             name: data.name ?? '',
@@ -174,4 +169,4 @@ export class Comenzar {
     });
   }
 
-  }
+}

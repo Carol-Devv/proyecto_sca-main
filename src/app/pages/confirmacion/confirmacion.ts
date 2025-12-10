@@ -1,3 +1,4 @@
+// Componente para mostrar la página de confirmación de pedidos
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -13,11 +14,12 @@ import { DataTransferService, Comida } from '../../data-transfer.service';
   styleUrl: './confirmacion.css',
 })
 export class Confirmacion implements OnInit {
-  totalPedidos: number | null = null;
-  comida: Comida | undefined;
+  totalPedidos: number | null = null; // Total de pedidos realizados por el usuario
+  comida: Comida | undefined; // Información del pedido confirmado
 
   constructor(private orderDBService: OrderDBService, private dataTransferService: DataTransferService) {}
 
+  // Obtiene la información del pedido y el total de pedidos al inicializar el componente
   ngOnInit(): void {
     this.comida = this.dataTransferService.getComida();
     console.log('Comida en confirmación:', this.comida);

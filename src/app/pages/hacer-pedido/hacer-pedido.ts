@@ -1,3 +1,4 @@
+// Componente para mostrar la página de realizar pedidos
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Estilos } from '../../components/estilos/estilos';

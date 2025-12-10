@@ -1,3 +1,4 @@
+// Componente para mostrar información de un plato de comida
 import { Component, Input, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderDBService } from '../../order-db.service';
@@ -12,16 +13,16 @@ import { Subscription } from 'rxjs';
   styleUrl: './comidas.css',
 })
 export class Comidas implements AfterViewInit, OnDestroy {
-  @Input() imagenUrl = '';
-  @Input() titulo = '';
-  @Input() descripcion = '';
-  @Input() ingredientes = '';
+  @Input() imagenUrl = ''; // URL de la imagen del plato
+  @Input() titulo = ''; // Título del plato
+  @Input() descripcion = ''; // Descripción del plato
+  @Input() ingredientes = ''; // Ingredientes del plato
 
   @ViewChild('rootLink', { read: ElementRef, static: true })
-  anchorRef!: ElementRef<HTMLAnchorElement>;
+  anchorRef!: ElementRef<HTMLAnchorElement>; // Referencia al enlace del componente
 
-  private captureHandler: ((e: Event) => void) | null = null;
-  private sub: Subscription | null = null;
+  private captureHandler: ((e: Event) => void) | null = null; // Manejador de eventos de clic
+  private sub: Subscription | null = null; // Suscripción para manejar observables
 
   constructor(
     private router: Router,
@@ -29,13 +30,12 @@ export class Comidas implements AfterViewInit, OnDestroy {
     private dataTransferService: DataTransferService
   ) {}
 
+  // Configura un listener en fase de captura para interceptar clics
   ngAfterViewInit(): void {
-    // Añadimos un listener en fase de captura para interceptar el click ANTES que routerLink
     if (this.anchorRef && this.anchorRef.nativeElement) {
       this.captureHandler = (event: Event) => {
         event.preventDefault();
         event.stopPropagation();
-        // stopImmediatePropagation para evitar otros listeners del mismo elemento
         (event as any).stopImmediatePropagation?.();
         this.handleOrder(event);
       };
@@ -43,6 +43,7 @@ export class Comidas implements AfterViewInit, OnDestroy {
     }
   }
 
+  // Limpia los recursos al destruir el componente
   ngOnDestroy(): void {
     if (this.captureHandler && this.anchorRef && this.anchorRef.nativeElement) {
       this.anchorRef.nativeElement.removeEventListener('click', this.captureHandler, true);
@@ -50,9 +51,8 @@ export class Comidas implements AfterViewInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
-  // Método para ejecutar la lógica del pedido
+  // Maneja la lógica de realizar un pedido
   private handleOrder(event: Event) {
-    // Obtener userName de sessionStorage
     const userStr = sessionStorage.getItem('user');
     if (!userStr) {
       alert('Por favor, inicia sesión antes de hacer un pedido.');
@@ -87,11 +87,9 @@ export class Comidas implements AfterViewInit, OnDestroy {
     };
 
     if (numeroAleatorio >= 0 && numeroAleatorio <= 49) {
-      // Confirmación: incrementa n_pedidos en el backend
       this.sub = this.orderDBService.confirmarPedidoEnDB(userName).subscribe({
         next: (res) => {
           console.log('Confirmado en backend:', res);
-          // Guardamos la comida y navegamos a confirmación
           this.dataTransferService.setComida(comidaActual);
           this.router.navigate(['/confirmacion']);
         },
@@ -101,7 +99,6 @@ export class Comidas implements AfterViewInit, OnDestroy {
         },
       });
     } else {
-      // Fallida: incrementa n_fallidos en el backend
       this.sub = this.orderDBService.registrarFallidoEnDB(userName).subscribe({
         next: (res) => {
           console.log('Fallido registrado en backend:', res);

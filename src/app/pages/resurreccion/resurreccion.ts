@@ -1,3 +1,4 @@
+// Componente para mostrar la página de resurrección de pedidos
 import { Component } from '@angular/core';
 import { Menu } from "../../components/menu/menu";
 

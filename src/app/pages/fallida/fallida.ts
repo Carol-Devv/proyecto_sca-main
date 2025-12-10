@@ -1,3 +1,4 @@
+// Componente para mostrar la página de pedidos fallidos
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Menu } from '../../components/menu/menu';
@@ -11,10 +12,11 @@ import { OrderDBService } from '../../order-db.service';
   styleUrl: './fallida.css',
 })
 export class Fallida implements OnInit {
-  totalFallidos: number | null = null;
+  totalFallidos: number | null = null; // Total de pedidos fallidos del usuario
 
   constructor(private orderDBService: OrderDBService) {}
 
+  // Obtiene el total de pedidos fallidos al inicializar el componente
   ngOnInit(): void {
     const userStr = sessionStorage.getItem('user');
     if (!userStr) return;

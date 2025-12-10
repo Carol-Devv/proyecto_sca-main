@@ -1,59 +1,33 @@
-# ProyectoSca
+# Proyecto SCA - HAMBRE O FIAMBRE
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+## Descripción
+Este proyecto es un pequeño juego interactivo donde los usuarios pueden explorar diferentes tipos de comida de varias culturas y realizar pedidos. La aplicación está diseñada para ofrecer una experiencia divertida y educativa sobre la gastronomía mundial.
 
-## Development server
+## Funcionalidades
+- **Explorar Menús:** Navega por diferentes categorías de comida como china, italiana, mexicana, japonesa, entre otras.
+- **Realizar Pedidos:** Selecciona tus platos favoritos y realiza pedidos.
+<!-- - **Historial de Pedidos:** Consulta los pedidos realizados anteriormente. -->
+- **Perfil de Usuario:** Personaliza tu perfil y gestiona tus preferencias.
+<!-- - **Resurrección de Pedidos:** Recupera pedidos anteriores con la funcionalidad de "resurrección". -->
 
-To start a local development server, run:
+## Tecnologías Usadas
+- **Frontend:** Angular (v20.3.0)
+- **Backend:** Node.js con Express (archivo `server.js` en la carpeta `server/`)
+- **Base de Datos:** Archivo SQL (`bbdd.sql`) para la gestión de datos (concretamente Postgresql).
+- **Estilos:** CSS para el diseño y la presentación visual.
+- **Herramientas de Desarrollo:**
+  - TypeScript para un desarrollo tipado y robusto.
+  - Karma y Jasmine para pruebas unitarias.
 
-```bash
-ng serve
-```
+## Estructura del Proyecto
+El proyecto está organizado de la siguiente manera:
+- **src/app:** Contiene los servicios, componentes y configuración principal de la aplicación.
+- **src/assets:** Recursos estáticos como imágenes y datos JSON.
+- **server:** Backend para manejar las solicitudes del cliente.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Instalación y Ejecución
+1. Clona este repositorio.
+2. Instala las dependencias con `npm install`.
+3. Ejecuta el servidor de desarrollo (server.js) con `npm start`.
+4. Lanza la página con 'ng serve'
+4. Accede a la aplicación en tu navegador en `http://localhost:4200`.

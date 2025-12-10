@@ -1,3 +1,4 @@
+// Componente para mostrar la página de comida india
 import { Component } from '@angular/core';
 import { Menu } from "../../components/menu/menu";
 import { Comidas } from "../../components/comidas/comidas";
