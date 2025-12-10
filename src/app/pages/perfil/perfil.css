@@ -22,12 +22,11 @@ h1{
 }
 
 img{
-	width: auto;
-	height: full;
+	width: 25%;
+	height: 100%;
 	object-fit: cover;
-	aspect-ratio: 1 / 1;
-	border-radius: 100%;
-	margin: 25px;
+	aspect-ratio: 1 / 0.75;
+    margin-left: 5%;
 }
 
 select{

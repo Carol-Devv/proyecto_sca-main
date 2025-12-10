@@ -20,9 +20,6 @@ export class Italiana {
   constructor(private pedidoService: PedidoService, private router: Router) {}
   seleccionarComida() {
     console.log("HOla")
-    
-    
-    //this.router.navigate(['/confirmacion']);
   }
  
 }

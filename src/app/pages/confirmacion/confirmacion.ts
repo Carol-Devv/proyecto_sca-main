@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Menu } from "../../components/menu/menu";
+import { Menu } from '../../components/menu/menu';
 import { OrderDBService } from '../../order-db.service';
 import { DataTransferService, Comida } from '../../data-transfer.service';
 
@@ -11,22 +11,33 @@ import { DataTransferService, Comida } from '../../data-transfer.service';
   templateUrl: './confirmacion.html',
   styleUrl: './confirmacion.css',
 })
-
-export class Confirmacion implements OnInit { 
-
-  totalPedidos: number | null = null; 
+export class Confirmacion implements OnInit {
+  totalPedidos: number | null = null;
   comida: Comida | undefined;
 
-  constructor(private orderDBService: OrderDBService, 
-    private dataTransferService: DataTransferService) { }
+  constructor(private orderDBService: OrderDBService, private dataTransferService: DataTransferService) {}
 
-  // 3. Definir el método ngOnDestroy() que es requerido por la interfaz
   ngOnInit(): void {
     this.comida = this.dataTransferService.getComida();
-    // Hacemos la llamada HTTP para obtener el total de la DB al cargar la página
-    this.orderDBService.getPedidosUsuarioTotal()
-      .subscribe(response => {
-        this.totalPedidos = response.total;
+
+    const userStr = sessionStorage.getItem('user');
+    if (!userStr) return;
+    try {
+      const user = JSON.parse(userStr);
+      const userName = user.username || user.userName || '';
+      if (!userName) return;
+      this.orderDBService.getPedidosUsuarioTotal(userName).subscribe({
+        next: (res) => {
+          if (res && res.success) {
+            this.totalPedidos = res.n_pedidos;
+          } else if (res && typeof (res as any).n_pedidos === 'number') {
+            this.totalPedidos = (res as any).n_pedidos;
+          }
+        },
+        error: (err) => console.error('Error obteniendo total pedidos:', err),
       });
+    } catch (e) {
+      console.error('Error parseando user en confirmacion:', e);
+    }
   }
 }
