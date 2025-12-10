@@ -9,11 +9,6 @@
     border-radius: 5px;
 }
 
-p,ul{
-    width: 30vw;
-    margin: 0 auto;
-    text-align: justify;
-}
 button {
     background-color: #c9201a;
     transition: 0.2s;
