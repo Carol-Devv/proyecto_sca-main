@@ -1,0 +1,40 @@
+import { Routes } from '@angular/router';
+import { Comenzar } from './pages/comenzar/comenzar';
+import { Landing } from './pages/landing/landing';
+import { HacerPedido } from './pages/hacer-pedido/hacer-pedido';
+import { Italiana } from './pages/italiana/italiana';
+import { China } from './pages/china/china';
+import { Japonesa } from './pages/japonesa/japonesa';
+import { Espanola } from './pages/espanola/espanola';
+import { India } from './pages/india/india';
+import { Rapida } from './pages/rapida/rapida';
+import { Mexicana } from './pages/mexicana/mexicana';
+import { Magrebi } from './pages/magrebi/magrebi';
+import { Perfil } from './pages/perfil/perfil';
+import { HistorialPedidos } from './pages/historial-pedidos/historial-pedidos';
+import { HistorialResurrecciones } from './pages/historial-resurrecciones/historial-resurrecciones';
+import { Confirmacion } from './pages/confirmacion/confirmacion';
+import { Fallida } from './pages/fallida/fallida';
+import { Resurreccion } from './pages/resurreccion/resurreccion';
+import { PedidoComponent } from './components/pedido/pedido.component';
+
+export const routes: Routes = [
+    { path: '', component: Landing },
+	{ path: 'comenzar', component: Comenzar },
+    { path: 'hacerPedido', component: HacerPedido },
+    { path: 'perfil', component: Perfil },
+	{ path: 'historialPedidos', component: HistorialPedidos },
+	{ path: 'historialResurrecciones', component: HistorialResurrecciones },
+    { path: 'italiana', component: Italiana },
+    { path: 'china', component: China },
+    { path: 'japonesa', component: Japonesa },
+    { path: 'espanola', component: Espanola },
+    { path: 'india', component: India },
+    { path: 'rapida', component: Rapida },
+    { path: 'mexicana', component: Mexicana },
+    { path: 'magrebi', component: Magrebi },
+    { path: 'confirmacion', component: Confirmacion },
+    { path: 'fallida', component: Fallida },
+    { path: 'resurreccion', component: Resurreccion },
+    { path: 'pedido', component: PedidoComponent }
+];

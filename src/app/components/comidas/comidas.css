@@ -1,0 +1,31 @@
+.tarjeta-comida{
+	width: full;
+	height: auto;
+	margin: 5% 10%;
+	padding-right: 1%;
+	border-radius: 10px;
+	background-color: #c9201a;
+	transition: 0.3s;
+	display: flex;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-comida:hover{
+	background-color: #d68d1f;
+	transition: 0.3s;
+}
+
+img{
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+	aspect-ratio: 1 / 1;
+	border-radius: 10px;
+	margin: 25px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}

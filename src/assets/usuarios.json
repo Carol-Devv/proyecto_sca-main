@@ -1,0 +1,14 @@
+{
+    "user": [
+    {
+        "usuario": 1,
+        "contraseña": "miau",
+        "nombre": "Alice Johnson",
+        "edad": 98,
+        "grupoSang": "O+",
+        "rinones": 2,
+        "religion": "Atea",
+        "estadoSalud": "Excelente"
+    }
+    ]
+}

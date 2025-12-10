@@ -1,0 +1,40 @@
+img {
+	width: 70px;
+	height: 70px;
+	padding-left: 60px;
+  }
+  
+  nav {
+	background-color: rgba(255, 255, 255, 0.637);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	align-items: center;
+  }
+  
+  ul {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;  /* 🔹 los li bajan de línea si no caben */
+	list-style: none;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+  }
+  
+  li {
+	margin: 10px 20px;
+	text-align: center;
+  }
+  
+  a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	transition: 0.2s;
+  }
+  
+  a:hover {
+	font-size: 1.05em;
+	transition: 0.2s;
+  }
+  

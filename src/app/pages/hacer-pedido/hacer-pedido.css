@@ -1,0 +1,12 @@
+
+h1{
+	text-align: center;
+	font-size: 50px;
+}
+.estilos-container{
+	padding: 0px 20%;
+	display: flex;
+	flex-wrap: wrap;       /* 🔹 Permite que los hijos bajen de línea */
+	gap: 50px;             /* Espacio entre los divs */
+	justify-content: center; /* Opcional: alinea los elementos al principio */
+  }

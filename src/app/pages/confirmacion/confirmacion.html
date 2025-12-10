@@ -1,0 +1,16 @@
+<!-- confirmacion.html -->
+<app-menu></app-menu>
+    <div class="confirmacion-container">
+      <h1>¡Pedido confirmado!🎉</h1>
+      <p>Gracias por tu pedido. Estamos preparando tu comida y te la enviaremos lo antes posible.</p>
+      <h2>---Resumen---</h2>
+      <div *ngIf="comida">
+        <!-- Usa el operador ? aquí -->
+        <img [src]="comida?.imagenUrl" alt="{{comida?.titulo}}">
+        <h3>{{comida?.titulo}}</h3>
+        <p>{{comida?.descripcion}}</p>
+        <small>{{comida?.ingredientes}}</small>
+      </div>
+      <p>Pedidos totales: <strong>{{ totalPedidos }}</strong></p>
+      <a routerLink="/hacerPedido"><button>Hacer otro pedido</button></a>
+    </div>
