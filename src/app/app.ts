@@ -6,7 +6,7 @@ import { Menu } from './components/menu/menu';
 @Component({
   selector: 'app-root', // Selector del componente raíz
   standalone: true,
-  imports: [RouterOutlet, Menu], // Importa el enrutador y el menú
+  imports: [RouterOutlet], // Importa el enrutador
   templateUrl: './app.html', // Plantilla HTML del componente
   styleUrls: ['./app.css'] // Estilos CSS del componente
 })

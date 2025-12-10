@@ -1,3 +1,4 @@
+//Componente del menú de navegación principal de la aplicación
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -9,5 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './menu.css',
 })
 export class Menu {
-
+  // Componente sin lógica compleja, solo presentación
 }

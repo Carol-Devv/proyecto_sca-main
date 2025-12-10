@@ -10,5 +10,5 @@ import { Menu } from "../../../components/menu/menu";
   styleUrl: './china.css',
 })
 export class China {
-
+  // Componente de presentación sin lógica adicional
 }

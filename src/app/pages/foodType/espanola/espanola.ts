@@ -10,5 +10,5 @@ import { Comidas } from "../../../components/comidas/comidas";
   styleUrl: './espanola.css',
 })
 export class Espanola {
-
+  // Componente de presentación sin lógica adicional
 }

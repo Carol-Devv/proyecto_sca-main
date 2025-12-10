@@ -10,5 +10,5 @@ import { Comidas } from "../../../components/comidas/comidas";
   styleUrl: './india.css',
 })
 export class India {
-
+  // Componente de presentación sin lógica adicional
 }

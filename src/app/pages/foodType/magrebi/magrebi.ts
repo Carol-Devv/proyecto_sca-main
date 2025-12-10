@@ -1,3 +1,4 @@
+// Componente para mostrar la página de comida magrebi
 import { Component } from '@angular/core';
 import { Menu } from "../../../components/menu/menu";
 import { Comidas } from "../../../components/comidas/comidas";
@@ -9,5 +10,5 @@ import { Comidas } from "../../../components/comidas/comidas";
   styleUrl: './magrebi.css',
 })
 export class Magrebi {
-
+  // Componente de presentación sin lógica adicional
 }

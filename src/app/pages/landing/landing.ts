@@ -1,3 +1,4 @@
+// Componente Landing (Página de Inicio)
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -9,5 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './landing.css',
 })
 export class Landing {
-
+  // Componente de presentación sin lógica
 }

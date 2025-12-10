@@ -1,3 +1,4 @@
+// Componente para la sección de comida rápida
 import { Component } from '@angular/core';
 import { Menu } from "../../../components/menu/menu";
 import { Comidas } from "../../../components/comidas/comidas";
@@ -9,5 +10,5 @@ import { Comidas } from "../../../components/comidas/comidas";
   styleUrl: './rapida.css',
 })
 export class Rapida {
-
+  // Componente de contenedor sin lógica
 }

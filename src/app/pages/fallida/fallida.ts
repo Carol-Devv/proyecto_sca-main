@@ -24,8 +24,11 @@ export class Fallida implements OnInit {
       const user = JSON.parse(userStr);
       const userName = user.username || user.userName || '';
       if (!userName) return;
+
+      // Realiza la llamada HTTP al servicio
       this.orderDBService.getTotalFallidos(userName).subscribe({
         next: (res) => {
+          // Maneja dos formatos posibles de respuesta
           if (res && res.success) {
             this.totalFallidos = res.n_fallidos;
           } else if (res && typeof (res as any).n_fallidos === 'number') {
