@@ -1,14 +1,22 @@
-
-
 .confirmacion-container {
     background-color: rgba(51, 255, 0, 0.37);
     border: 2px solid green;
     width: 80%;
     margin: 10%;
-    padding: 5px;
+    padding: 20px;
     text-align: center;
     margin-top: 50px;
     border-radius: 5px;
+}
+
+/* Imagen del resumen: tamaño fijo y centrada */
+.confirmacion-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 16px;
+    border-radius: 6px;
 }
 
 button {

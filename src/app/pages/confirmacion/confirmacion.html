@@ -5,12 +5,12 @@
       <p>Gracias por tu pedido. Estamos preparando tu comida y te la enviaremos lo antes posible.</p>
       
       <h2>---Resumen---</h2>
-      <!--<div *ngIf="comida">
+      <div *ngIf="comida">
         <img [src]="comida?.imagenUrl" alt="{{comida?.titulo}}">
         <h3>{{comida?.titulo}}</h3>
         <p>{{comida?.descripcion}}</p>
         <small>{{comida?.ingredientes}}</small>
-      </div>-->
+      </div>
       <p>Pedidos confirmados totales: <strong>{{ totalPedidos }}</strong></p>
       <a routerLink="/hacerPedido"><button>Hacer otro pedido</button></a>
     </div>

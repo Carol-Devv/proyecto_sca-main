@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Menu } from '../../components/menu/menu';
 import { OrderDBService } from '../../order-db.service';
@@ -7,7 +8,7 @@ import { DataTransferService, Comida } from '../../data-transfer.service';
 @Component({
   selector: 'app-confirmacion',
   standalone: true,
-  imports: [Menu, RouterLink],
+  imports: [CommonModule, Menu, RouterLink],
   templateUrl: './confirmacion.html',
   styleUrl: './confirmacion.css',
 })
@@ -19,6 +20,7 @@ export class Confirmacion implements OnInit {
 
   ngOnInit(): void {
     this.comida = this.dataTransferService.getComida();
+    console.log('Comida en confirmación:', this.comida);
 
     const userStr = sessionStorage.getItem('user');
     if (!userStr) return;
@@ -34,7 +36,7 @@ export class Confirmacion implements OnInit {
             this.totalPedidos = (res as any).n_pedidos;
           }
         },
-        error: (err) => console.error('Error obteniendo total pedidos:', err),
+        error: (err) => console.error('Error al obtener total pedidos:', err),
       });
     } catch (e) {
       console.error('Error parseando user en confirmacion:', e);
